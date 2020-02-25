@@ -12,18 +12,21 @@ def color_stretching(img):
 	result = cv2.cvtColor(result, cv2.COLOR_LAB2BGR)
 	return result
 
-def find_gate(img):
+def find_gate(img, show):
 	img = np.int16(img)
 	grayscaleImg = np.uint8((255 + img[:,:,2] - ((img[:,:,1] + img[:,:,0])/2))/2)
-	cv2.imshow("grayscale", grayscaleImg)
+	if show:
+		cv2.imshow("grayscale", grayscaleImg)
 	grayscaleImg = cv2.blur(grayscaleImg, (5,5))
 	grayscaleImg = cv2.Canny(grayscaleImg, 10, 25)
-	cv2.imshow("canny", grayscaleImg)
+	if show:
+		cv2.imshow("canny", grayscaleImg)
 	lines = cv2.HoughLinesP(grayscaleImg, rho=1, theta=np.pi/180, threshold = 10, minLineLength=30, maxLineGap = 10)
 	#print(lines)
 	img = cv2.cvtColor(grayscaleImg.copy(), cv2.COLOR_GRAY2BGR)
 	draw_lines(img, lines, (0, 0, 255))
-        cv2.imshow("lines", img)
+	if show:
+		cv2.imshow("lines", img)
 	majorLines = find_major_lines(lines, 60, 0.2)
 	#print(majorLines)
 	majorHorizontalLines = [[x.getLine()] for x in majorLines[0]]
@@ -31,8 +34,9 @@ def find_gate(img):
 	print(majorVerticalLines)
 	majorlineImg = cv2.cvtColor(grayscaleImg, cv2.COLOR_GRAY2BGR)
 	draw_lines(majorlineImg, majorHorizontalLines, (0,255,0))
-        draw_lines(majorlineImg, majorVerticalLines, (0,0,255))
-	cv2.imshow("major lines", majorlineImg)
+	draw_lines(majorlineImg, majorVerticalLines, (0,0,255))
+	if show:
+		cv2.imshow("major lines", majorlineImg)
 	return None, None
 
 def find_major_lines(lines, coordThresh, slopeThresh):
@@ -56,10 +60,10 @@ def find_major_lines(lines, coordThresh, slopeThresh):
 		if addedLine == False:
                         majorVerticalLines.append(MajorLine(verticalLines[i], False))
 
-        for i in range(len(horizontalLines)):
+	for i in range(len(horizontalLines)):
 		addedLine = False
-                for majorLine in majorHorizontalLines:
-                        if majorLine.checkAddLine(horizontalLines[i], coordThresh, slopeThresh):
+		for majorLine in majorHorizontalLines:
+			if majorLine.checkAddLine(horizontalLines[i], coordThresh, slopeThresh):
 				addedLine = True
 				break 
 		if addedLine == False:
@@ -118,7 +122,7 @@ class MajorLine:
 			if self.horizontal:
 				print ("horizontal " + str(slope))
 			self.avgSlope = ((self.numLines*self.avgSlope) + slope)/(float)(self.numLines + 1)
-                        self.avgPerpCoord = ((self.numLines*self.avgPerpCoord) + perpCoord)/(float)(self.numLines + 1)
+			self.avgPerpCoord = ((self.numLines*self.avgPerpCoord) + perpCoord)/(float)(self.numLines + 1)
 			self.numLines += 1
 			self.minParrCoord = min(self.minParrCoord, p1, p2)
 			self.maxParrCoord = max(self.maxParrCoord, p1, p2)
@@ -189,10 +193,10 @@ if __name__ == "__main__":
 		img = color_stretching(frame)
 		cv2.imshow("original", frame)
 		cv2.imshow("modified", img)
-		gateFound, gate = find_gate(img) #currently this only works for 1 gate and will find the first valid gate
+		gateFound, gate = find_gate(img, True) #currently this only works for 1 gate and will find the first valid gate
 		
 		if cv2.waitKey(1) == ord('q'):
 			break;
 		
 	cap.release()
- 	cv2.destroyAllWindows()
+	cv2.destroyAllWindows()
