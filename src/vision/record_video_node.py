@@ -9,7 +9,7 @@ def callback(data):
 
 def listener():
 	rospy.init_node("listener", anonymous=True)
-	rospy.Subscriber("camera/image_raw")
+	rospy.Subscriber("camera/image_raw", Image, callback)
 	rospy.spin()
 
 if __name__ == "__main__":
