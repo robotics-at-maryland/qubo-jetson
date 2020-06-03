@@ -1,0 +1,51 @@
+[0m[ INFO] [1591061898.191774269]: Finished loading Gazebo ROS API Plugin.[0m
+[1;32m[Msg] [0m[1;32mWaiting for master.[0m[1;32m
+[0m[1;32m[0m[0m[ INFO] [1591061898.195980983]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+[1;32m[Msg] [0m[1;32mConnected to gazebo master @ [0m[1;32mhttp://127.0.0.1:11345[0m[1;32m
+[0m[1;32m[0m[1;32m[Msg] [0m[1;32mPublicized address: [0m[1;32m10.165.2.199[0m[1;32m
+[0m[1;32m[0m[0m[ INFO] [1591061898.219055403]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[ INFO] [1591061898.220802870]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+[1;32m[Msg] [0m[1;32mWaiting for master.[0m[1;32m
+[0m[1;32m[0m[1;32m[Msg] [0m[1;32mConnected to gazebo master @ [0m[1;32mhttp://127.0.0.1:11345[0m[1;32m
+[0m[1;32m[0m[1;32m[Msg] [0m[1;32mPublicized address: [0m[1;32m10.165.2.199[0m[1;32m
+[0m[1;32m[0mStart publishing vehicle footprints to RViz
+/gazebo/get_model_state service is unavailable
+... logging to /home/nrenegar/.ros/log/31d6947a-a471-11ea-b0af-10feed10055a/roslaunch-nrenegar-PC-8768.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;nbrf.launch
+[1mstarted roslaunch server http://nrenegar-PC:41999/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /publish_world_models/meshes/sea_bottom/plane: [16, 16, 0.1]
+ * /publish_world_models/meshes/sea_bottom/pose/position: [0, 0, -10]
+ * /publish_world_models/meshes/sea_surface/mesh: package://uuv_gaz...
+ * /publish_world_models/meshes/sea_surface/model: sea_surface
+ * /publish_world_models/meshes/sea_surface/scale: [0.0016, 0.0016, 1]
+ * /rosdistro: kinetic
+ * /rosversion: 1.12.14
+ * /use_sim_time: True
+
+NODES
+  /
+    gazebo (gazebo_ros/gzserver)
+    gazebo_gui (gazebo_ros/gzclient)
+    publish_world_models (uuv_assistants/publish_world_models.py)
+    world_ned_frame_publisher (tf2_ros/static_transform_publisher)
+
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;nbrf.launch http://localhost:11311
+[1mprocess[gazebo-1]: started with pid [8785][0m
+[1mprocess[gazebo_gui-2]: started with pid [8790][0m
+[1mprocess[world_ned_frame_publisher-3]: started with pid [8795][0m
+[1mprocess[publish_world_models-4]: started with pid [8796][0m
+[publish_world_models-4] killing on exit
+[world_ned_frame_publisher-3] killing on exit
+[gazebo_gui-2] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

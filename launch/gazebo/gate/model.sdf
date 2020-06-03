@@ -18,12 +18,12 @@
       </inertial>
       <collision name="collision">
         <geometry>
-          <mesh><uri>file://gate/gate.dae</uri></mesh>
+          <mesh><uri>model://gate/meshes/gate.dae</uri></mesh>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
-          <mesh><uri>file://gate/gate.dae</uri></mesh>
+          <mesh><uri>model://gate/meshes/gate.dae</uri></mesh>
         </geometry>
       </visual>
     </link>

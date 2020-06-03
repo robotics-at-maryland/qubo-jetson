@@ -165,7 +165,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file://empty_pool/pool.dae</uri>
+              <uri>model://empty_pool/meshes/pool.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -186,7 +186,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file://empty_pool/pool.dae</uri>
+              <uri>model://empty_pool/meshes/pool.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -214,7 +214,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file://gate/gate.dae</uri>
+              <uri>model://gate/meshes/gate.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -235,7 +235,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file://gate/gate.dae</uri>
+              <uri>model://gate/meshes/gate.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -263,7 +263,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>file://pipe/pipe.dae</uri>
+              <uri>model://pipe/meshes/pipe.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -284,7 +284,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>file://pipe/pipe.dae</uri>
+              <uri>model://pipe/meshes/pipe.dae</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
